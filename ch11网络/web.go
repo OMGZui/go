@@ -7,6 +7,7 @@ import (
 )
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "%s\n", r.Header)
 	remPartOfURL := r.URL.Path[len("/hello/"):]
 	fmt.Fprintf(w, "Hello %s!", remPartOfURL)
 }

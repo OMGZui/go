@@ -16,6 +16,9 @@ func main() {
 	printSlice(s)
 
 	a := make([]int, 5)
+	a[1] = 1
+	a = append(a, 2)
+	a = append(a, 20)
 	printSliceBy("a", a)
 }
 
@@ -24,6 +27,5 @@ func printSlice(s []int) {
 }
 
 func printSliceBy(s string, x []int) {
-	fmt.Printf("%s len=%d cap=%d %v\n",
-		s, len(x), cap(x), x)
+	fmt.Printf("%s len=%d cap=%d %v\n", s, len(x), cap(x), x)
 }

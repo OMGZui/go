@@ -14,5 +14,6 @@ func say(s string) {
 
 func main() {
 	go say("world")
+	go say("world")
 	say("hello")
 }
