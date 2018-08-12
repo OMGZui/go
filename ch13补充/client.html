@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket</title>
+</head>
+<body>
+<h1>Go WebSocket</h1>
+<form>
+    <p>
+        消息: <input id="message" type="text" value="你好">
+    </p>
+</form>
+<button onclick="send();">发送</button>
+</body>
+<script type="text/javascript">
+    let sock = null;
+    let ws = "ws://127.0.0.1:1234";
+
+    window.onload = function () {
+
+        console.log("onload");
+
+        sock = new WebSocket(ws);
+
+        sock.onopen = function () {
+            console.log("连接到 " + ws);
+        }
+
+        sock.onclose = function (e) {
+            console.log("连接关闭 (" + e.code + ")");
+        }
+
+        sock.onmessage = function (e) {
+            console.log("来自服务器的消息: " + e.data);
+        }
+    }
+
+    function send() {
+        let msg = document.getElementById('message').value;
+        sock.send(msg);
+    }
+</script>
+</html>
