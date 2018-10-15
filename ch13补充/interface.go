@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 	"reflect"
+	"strconv"
 )
 
 type Element interface{}

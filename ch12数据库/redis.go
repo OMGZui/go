@@ -54,13 +54,13 @@ func close() {
 	}()
 }
 
-func Get(key string) ([]byte, error) {
+func Get(key string) (string, error) {
 
 	conn := Pool.Get()
 	defer conn.Close()
 
-	var data []byte
-	data, err := redis.Bytes(conn.Do("GET", key))
+	var data string
+	data, err := redis.String(conn.Do("GET", key))
 	if err != nil {
 		return data, fmt.Errorf("error get key %s: %v", key, err)
 	}
